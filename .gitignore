@@ -1,0 +1,23 @@
+# Docker
+*.env
+.env.*
+docker-compose.override.yml
+
+# System
+.DS_Store
+
+# IDE
+.vscode/
+
+# Logs
+*.log
+
+# Coverage
+*.out
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib

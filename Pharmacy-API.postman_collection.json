@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "1f7a209f-1bb2-4afc-a7ba-00885514960b",
+		"name": "ABC-Pharmacy-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34564389"
+	},
+	"item": [
+		{
+			"name": "Item Endpoints",
+			"item": [
+				{
+					"name": "Get All Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/items",
+						"description": "Get a list of all items in the pharmacy"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/items/1",
+						"description": "Get details of a specific item by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"penadol\",\n  \"unit_price\": 112,\n  \"category\": \"Medicine\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/items",
+						"description": "Add a new item to the inventory"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Item by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Paracetamol 500mg\",\n  \"unit_price\": 12.0,\n  \"category\": \"Medicine\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/items/3",
+						"description": "Update an existing item by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Item by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Paracetamol\",\n  \"unit_price\": 10.5,\n  \"category\": \"Medicine\"\n}"
+						},
+						"url": "{{baseURL}}/items/5",
+						"description": "Remove an item from the inventory by ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices Endpoints",
+			"item": [
+				{
+					"name": "Get All Invoices",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"siddhalepa\",\n  \"unit_price\": 112,\n  \"category\": \"Medicine\"\n}"
+						},
+						"url": "{{baseURL}}/invoices",
+						"description": "Get a list of all invoices"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/invoices/3",
+						"description": "Get details of a specific invoice by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Invoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_name\": \"Ali Kareem\",\n  \"mobile_no\": \"0712345678\",\n  \"email\": \"ali.kareem@clinicmail.com\",\n  \"address\": \"12 Clinic Rd, Central City\",\n  \"billing_type\": \"Insurance\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/invoices/",
+						"description": "Create a new invoice for a client"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice By ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_name\": \"Dineth Dilhara\",\n  \"mobile_no\": \"0712345678\",\n  \"email\": \"ali.kareem@clinicmail.com\",\n  \"address\": \"12 Clinic Rd, Central City\",\n  \"billing_type\": \"Cash\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/invoices/1",
+						"description": "Update invoice information by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_name\": \"Dineth Dilhara\",\n  \"mobile_no\": \"0712345678\",\n  \"email\": \"ali.kareem@clinicmail.com\",\n  \"address\": \"12 Clinic Rd, Central City\",\n  \"billing_type\": \"Cash\"\n}\n"
+						},
+						"url": "{{baseURL}}/invoices/2",
+						"description": "Delete an invoice by ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice Item Endpoints",
+			"item": [
+				{
+					"name": "Update invoice Item by Invoce ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 6,\n  \"item_id\": 7,\n  \"quantity\": 24\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/invoices/3/items"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Invoice Item By Invoice ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"item_id\": 6,\n  \"quantity\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/invoices/3/items"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice Item by Invoice ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/invoices/3/items?item_id=5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"3",
+								"items"
+							],
+							"query": [
+								{
+									"key": "item_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

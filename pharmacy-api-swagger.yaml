@@ -1,0 +1,267 @@
+openapi: 3.0.0
+info:
+  title: Pharmacy-API
+  description: API for managing pharmacy items and invoices
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: Item Endpoints
+    description: Operations related to pharmacy items
+  - name: Invoice Endpoints
+    description: Operations related to invoices
+  - name: Invoice Item Endpoints
+    description: Operations related to items within invoices
+paths:
+  /items:
+    get:
+      tags:
+        - Item Endpoints
+      summary: Get All Items
+      description: Get a list of all items in the pharmacy
+      responses:
+        '200':
+          description: List of items
+    post:
+      tags:
+        - Item Endpoints
+      summary: Add a New Item
+      description: Add a new item to the inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                unit_price:
+                  type: number
+                category:
+                  type: string
+      responses:
+        '201':
+          description: Item created successfully
+  /items/{id}:
+    get:
+      tags:
+        - Item Endpoints
+      summary: Get Item By ID
+      description: Get details of a specific item by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Item details
+    put:
+      tags:
+        - Item Endpoints
+      summary: Update Item By ID
+      description: Update an existing item by its ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                unit_price:
+                  type: number
+                category:
+                  type: string
+      responses:
+        '200':
+          description: Item updated successfully
+    delete:
+      tags:
+        - Item Endpoints
+      summary: Delete Item By ID
+      description: Remove an item from the inventory by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Item deleted successfully
+  /invoices:
+    get:
+      tags:
+        - Invoice Endpoints
+      summary: Get All Invoices
+      description: Get a list of all invoices
+      responses:
+        '200':
+          description: List of invoices
+    post:
+      tags:
+        - Invoice Endpoints
+      summary: Create a New Invoice
+      description: Create a new invoice for a client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_name:
+                  type: string
+                mobile_no:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                billing_type:
+                  type: string
+      responses:
+        '201':
+          description: Invoice created successfully
+  /invoices/{id}:
+    get:
+      tags:
+        - Invoice Endpoints
+      summary: Get Invoice By ID
+      description: Get details of a specific invoice by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Invoice details
+    put:
+      tags:
+        - Invoice Endpoints
+      summary: Update Invoice By ID
+      description: Update invoice information by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_name:
+                  type: string
+                mobile_no:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                billing_type:
+                  type: string
+      responses:
+        '200':
+          description: Invoice updated successfully
+    delete:
+      tags:
+        - Invoice Endpoints
+      summary: Delete Invoice By ID
+      description: Delete an invoice by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Invoice deleted successfully
+  /invoices/{invoiceId}/items:
+    post:
+      tags:
+        - Invoice Item Endpoints
+      summary: Add Invoice Item By Invoice ID
+      description: Add an item to an invoice by its ID
+      parameters:
+        - name: invoiceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                quantity:
+                  type: integer
+      responses:
+        '200':
+          description: Item added to invoice successfully
+    put:
+      tags:
+        - Invoice Item Endpoints
+      summary: Update Invoice Item By Invoice ID
+      description: Update item in an invoice by its ID
+      parameters:
+        - name: invoiceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                item_id:
+                  type: integer
+                quantity:
+                  type: integer
+      responses:
+        '200':
+          description: Item updated in invoice successfully
+    delete:
+      tags:
+        - Invoice Item Endpoints
+      summary: Delete Invoice Item by Invoice ID
+      description: Remove an item from an invoice by its ID
+      parameters:
+        - name: invoiceId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: item_id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Item removed from invoice successfully
